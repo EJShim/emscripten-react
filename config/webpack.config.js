@@ -354,6 +354,7 @@ module.exports = function(webpackEnv) {
             },
           ],
           include: paths.appSrc,
+          exclude: path.resolve(paths.appSrc,'emscripten'),
         },
         {
           // "oneOf" will traverse all following loaders until one will

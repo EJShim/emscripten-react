@@ -1,12 +1,19 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Module } from 'module';
+import Module from './emscripten/emscriptenmodule';
 
 class App extends Component {
 
-  componentDidMount(){
-    console.log(this.refs.renderwindow)
+  async componentDidMount(){
+
+    var moduleParam = {
+      canvas: this.refs.renderwindow
+    };
+
+    const renderingModule = Module(moduleParam);
+    console.log(renderingModule);
+
+    // console.log(Module)    
   }
 
   render(){
