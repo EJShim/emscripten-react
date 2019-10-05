@@ -25,3 +25,5 @@ yarn.lock
 package-lock.json
 cpp-src/build
 public/module/
+.vscode/
+report.*
