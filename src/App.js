@@ -21,7 +21,11 @@ class App extends Component {
       window.addEventListener('resize',e=>{
 
         pipeline._handleResize(window.innerWidth, window.innerHeight);
-      })
+      });
+
+
+      const gl = renderWindow.getContext("webgl");
+      console.log(gl.getParameter(gl.VERSION));
     })
 
 

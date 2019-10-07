@@ -1,10 +1,11 @@
 
 #include <emscripten.h>
 #include <SDL.h>
+#include <GLES3/gl31.h>
 #include <iostream>
 
-#define GL_GLEXT_PROTOTYPES 1
-#include <SDL_opengles2.h>
+// #define GL_GLEXT_PROTOTYPES 1
+
 
 // Shader sources
 const GLchar* vertexSource =
@@ -60,17 +61,20 @@ void main_loop() {
     glDrawArrays(GL_TRIANGLES, 0, 3);
 
     SDL_GL_SwapWindow(window);
+
+    
+    // std::cout << SDL_GL_GetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 0) << std::endl;
  }
 
 int main()
 {
     SDL_CreateWindowAndRenderer(640, 480, 0, &window, nullptr);
 
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-
+    // SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    // SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+    // SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    // SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+ 
     // Create a Vertex Buffer Object and copy the vertex data to it
     GLuint vbo;
     glGenBuffers(1, &vbo);    
