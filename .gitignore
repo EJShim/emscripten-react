@@ -27,3 +27,5 @@ cpp-src/build
 public/module/
 .vscode/
 report.*
+
+cpp-src/*/build/

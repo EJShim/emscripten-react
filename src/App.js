@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
-import openglRenderingPipeline from './emscripten/openglRendering';
+import es2pipeline from './emscripten/es2pipeline';
+import es3pipeline from './emscripten/es3pipeline';
 
 class App extends Component {
 
@@ -11,21 +12,21 @@ class App extends Component {
       canvas: renderWindow
     };
 
-    openglRenderingPipeline(moduleParam).then(pipeline=>{    
-      //add event
-      renderWindow.addEventListener('click',e=>{
-        pipeline._toggle_background_color();
-      } );
+    es3pipeline(moduleParam).then(pipeline=>{    
+      // //add event
+      // renderWindow.addEventListener('click',e=>{
+      //   pipeline._toggle_background_color();
+      // } );
       
       
-      window.addEventListener('resize',e=>{
+      // window.addEventListener('resize',e=>{
 
-        pipeline._handleResize(window.innerWidth, window.innerHeight);
-      });
+      //   pipeline._handleResize(window.innerWidth, window.innerHeight);
+      // });
 
 
-      const gl = renderWindow.getContext("webgl");
-      console.log(gl.getParameter(gl.VERSION));
+      // const gl = renderWindow.getContext("webgl");
+      // console.log(gl.getParameter(gl.VERSION));
     })
 
 
