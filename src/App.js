@@ -1,19 +1,32 @@
 import React, {Component} from 'react';
 import './App.css';
-import Module from './emscripten/emscriptenmodule';
+import openglRenderingPipeline from './emscripten/openglRendering';
 
 class App extends Component {
 
-  async componentDidMount(){
+  componentDidMount(){
 
+    const renderWindow = this.refs.renderwindow;
     var moduleParam = {
-      canvas: this.refs.renderwindow
+      canvas: renderWindow
     };
 
-    const renderingModule = Module(moduleParam);
-    console.log(renderingModule);
+    openglRenderingPipeline(moduleParam).then(pipeline=>{    
+      //add event
+      renderWindow.addEventListener('click',e=>{
+        pipeline._toggle_background_color();
+      } );
+      
+      
+      window.addEventListener('resize',e=>{
 
-    // console.log(Module)    
+        pipeline._handleResize(window.innerWidth, window.innerHeight);
+      })
+    })
+
+
+
+    
   }
 
   render(){
