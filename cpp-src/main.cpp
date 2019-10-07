@@ -25,10 +25,7 @@ const GLchar* fragmentSource =
 
 
     
-//Global Things...
-SDL_Window *window;
-GLfloat vertices[] = {0.0f, 0.5f, 0.5f, -0.5f, -0.5f, -0.5f};
-bool first_call = true;
+
 
 
 // an example of something we will control from the javascript side
@@ -46,7 +43,12 @@ extern "C" void EMSCRIPTEN_KEEPALIVE resize_window(){
 }
 
 void main_loop() {
+    //Global Things...
+    static SDL_Window *window;
+    static GLfloat vertices[] = {0.0f, 0.5f, 0.5f, -0.5f, -0.5f, -0.5f};
+    static bool first_call = true;
 
+    
     if(first_call){
             
         SDL_CreateWindowAndRenderer(1000, 1000, 0, &window, nullptr);
